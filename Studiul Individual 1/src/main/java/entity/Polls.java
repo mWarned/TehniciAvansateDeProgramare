@@ -1,11 +1,11 @@
 package entity;
 
 import jakarta.persistence.*;
-
-import java.io.Serializable;
+import utils.HelperInterface;
 
 @Entity
-public class Polls implements Serializable, Cloneable {
+@NamedQuery(name = "Polls.All", query = "SELECT p FROM Polls p")
+public class Polls implements HelperInterface {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "ID")
@@ -74,5 +74,20 @@ public class Polls implements Serializable, Cloneable {
         result = 31 * result + (person != null ? person.hashCode() : 0);
         result = 31 * result + poll;
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Sondajele si Persoanele:{" +
+                "PID = " + pid +
+                ", ID_Persoana = " + person +
+                ", ID_Sondaj = " + poll +
+                '}';
+    }
+
+
+    @Override
+    public int getPID() {
+        return pid;
     }
 }

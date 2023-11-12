@@ -1,13 +1,17 @@
 package entity;
 
 import jakarta.persistence.*;
+import utils.HelperInterface;
 
-import java.io.Serializable;
 import java.sql.Date;
 
 @Entity
-@NamedQuery(name = "SelecteazaToatePersoanele", query = "SELECT ALL FROM persoane")
-public class Persoane implements Serializable, Cloneable {
+@NamedQuery(name = "Persoane.All", query = "SELECT p FROM Persoane p")
+@NamedQuery(name = "Persoane.Oldest", query = "SELECT p FROM Persoane p WHERE p.dataNasterii = (SELECT MIN(p2.dataNasterii) FROM Persoane p2)")
+@NamedQuery(name = "Persoane.Youngest", query = "SELECT p FROM Persoane p WHERE p.dataNasterii = (SELECT MAX(p2.dataNasterii) FROM Persoane p2)")
+@NamedQuery(name = "Persoane.OrderByBirthday", query = "SELECT p FROM Persoane p ORDER BY p.dataNasterii ASC")
+@NamedQuery(name = "Persoane.DeletePID", query = "DELETE FROM Persoane p WHERE p.pid = ?1")
+public class Persoane implements HelperInterface {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "ID")
@@ -129,5 +133,23 @@ public class Persoane implements Serializable, Cloneable {
         result = 31 * result + (dataNasterii != null ? dataNasterii.hashCode() : 0);
         result = 31 * result + (int) casatorit;
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Persoane{" +
+                "pid=" + pid +
+                ", nume='" + nume + '\'' +
+                ", prenume='" + prenume + '\'' +
+                ", nrTelefon='" + nrTelefon + '\'' +
+                ", email='" + email + '\'' +
+                ", dataNasterii=" + dataNasterii +
+                ", casatorit=" + casatorit +
+                '}';
+    }
+
+    @Override
+    public int getPID() {
+        return pid;
     }
 }

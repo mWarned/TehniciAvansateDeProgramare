@@ -1,53 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="polldb@localhost" uuid="36537eb7-6f99-404b-9ddd-732c5050a5fb">
+    <data-source source="LOCAL" name="polldb@localhost" uuid="de0a9295-1b6f-409e-a043-752f6172c3c0">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
-      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/polldb</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
-    <data-source source="LOCAL" name="default/EclipseLink" uuid="6b1f3a47-4f02-4e01-8f5f-2678222cafbf">
-      <driver-ref>mysql.8</driver-ref>
-      <synchronize>true</synchronize>
-      <imported>true</imported>
-      <remarks>EclipseLink
-
-C:/GitHub/TehniciAvansateDeProgramare/Studiul Individual 1/src/main/resources/META-INF/persistance.xml</remarks>
-      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/polldb</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
-    <data-source source="LOCAL" name="default/OpenJPA" uuid="b9277457-9708-4b73-b9f7-5eea1831b220">
-      <driver-ref>mysql.8</driver-ref>
-      <synchronize>true</synchronize>
-      <imported>true</imported>
-      <remarks>OpenJPA
-
-C:/GitHub/TehniciAvansateDeProgramare/Studiul Individual 1/src/main/resources/META-INF/persistance.xml</remarks>
-      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/polldb</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
-    <data-source source="LOCAL" name="default/TopLink" uuid="88a6695e-7648-4274-bc48-bf127cf7f378">
-      <driver-ref>mysql.8</driver-ref>
-      <synchronize>true</synchronize>
-      <imported>true</imported>
-      <remarks>TopLink
-
-C:/GitHub/TehniciAvansateDeProgramare/Studiul Individual 1/src/main/resources/META-INF/persistance.xml</remarks>
-      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/polldb</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
-    <data-source source="LOCAL" name="default/Hibernate" uuid="696e5dc2-98ac-4261-83ac-b3a71042d06d">
-      <driver-ref>mysql.8</driver-ref>
-      <synchronize>true</synchronize>
-      <imported>true</imported>
-      <remarks>Hibernate
-
-C:/GitHub/TehniciAvansateDeProgramare/Studiul Individual 1/src/main/resources/META-INF/persistance.xml</remarks>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306/polldb</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>

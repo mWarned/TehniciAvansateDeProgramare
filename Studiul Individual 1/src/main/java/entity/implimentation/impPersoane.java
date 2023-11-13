@@ -2,6 +2,7 @@ package entity.implimentation;
 
 import entity.Persoane;
 import jakarta.persistence.*;
+import org.hibernate.cfg.beanvalidation.GroupsPerOperation;
 import utils.queries.queryOperations;
 
 import java.time.LocalDate;
@@ -26,12 +27,12 @@ public class impPersoane implements impHelper<Persoane>{
 
     @Override
     public void insert(List<Persoane> elementList) {
-
+        queryOperations.insertList(elementList);
     }
 
     @Override
     public void insert(Persoane element) {
-
+        queryOperations.insert(element);
     }
 
     public List<Persoane> findOldest(){
@@ -48,25 +49,28 @@ public class impPersoane implements impHelper<Persoane>{
 
     public List<Persoane> outputPeopleInAgeRange(int age1, int age2){
         LocalDate currentDate = LocalDate.now();
-        LocalDate startDate = currentDate.minusYears(age1);
-        LocalDate endDate = currentDate.minusYears(age2);
-
-        System.out.println(startDate + " " + endDate);
+        LocalDate startDate = currentDate.minusYears(age2);
+        LocalDate endDate = currentDate.minusYears(age1);
 
         return  queryOperations.twoParametersQuery("Persoane.AgeRange", startDate, endDate, Persoane.class);
     }
-    public Float divorcePercentage(){
+    public String divorcePercentage(){
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
 
-        Float entityList;
+        float divorceRate;
 
         try {
             transaction.begin();
 
-            TypedQuery<Persoane> namedQuerry = entityManager.createNamedQuery("Persoane.DivortatPercentage", Persoane.class);
-            entityList = (float) namedQuerry.getFirstResult();
+            TypedQuery<Long> countDivorcedQuery = entityManager.createNamedQuery("Persoane.DivorcedNr", Long.class);
+            float countDivorced = countDivorcedQuery.getSingleResult();
+
+            TypedQuery<Long> countTotalQuery = entityManager.createNamedQuery("Persoane.TotalNr", Long.class);
+            float countTotal = countTotalQuery.getSingleResult();
+
+            divorceRate = (countDivorced / countTotal) * 100;
 
             transaction.commit();
         }finally {
@@ -74,6 +78,22 @@ public class impPersoane implements impHelper<Persoane>{
             entityManager.clear();
             entityManagerFactory.close();
         }
-        return entityList;
+        return divorceRate + " %";
+    }
+
+    public List<Persoane> peopleOver18(char sex){
+        List<Persoane> result = null;
+        if (sex == 'm'){
+            result = queryOperations.parameterQuery("Persoane.SelectM18",LocalDate.now().minusYears(18), Persoane.class);
+        } else if (sex == 'f'){
+            result = queryOperations.parameterQuery("Persoane.SelectF18",LocalDate.now().minusYears(18), Persoane.class);
+        } else {
+            System.out.println("Ati introdus sexul gresit!");
+        }
+        return result;
+    }
+
+    public List<Persoane> marriedUnder20(){
+        return queryOperations.parameterQuery("Persoane.MarriedUnder20",LocalDate.now().minusYears(20) , Persoane.class);
     }
 }

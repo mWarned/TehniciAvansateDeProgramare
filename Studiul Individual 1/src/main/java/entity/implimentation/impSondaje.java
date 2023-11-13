@@ -13,21 +13,21 @@ public class impSondaje implements impHelper<Sondaje>{
 
     @Override
     public Sondaje findByID(int id) {
-        return null;
+        return queryOperations.findById(id, Sondaje.class);
     }
 
     @Override
     public void deleteByID(int id) {
-
+        queryOperations.deleteById(id, Sondaje.class);
     }
 
     @Override
     public void insert(List<Sondaje> elementList) {
-
+        queryOperations.insertList(elementList);
     }
 
     @Override
     public void insert(Sondaje element) {
-
+        queryOperations.insert(element);
     }
 }

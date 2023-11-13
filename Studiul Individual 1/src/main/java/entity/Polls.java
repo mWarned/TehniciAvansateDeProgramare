@@ -5,6 +5,7 @@ import utils.HelperInterface;
 
 @Entity
 @NamedQuery(name = "Polls.All", query = "SELECT p FROM Polls p")
+@NamedQuery(name = "Polls.AnonymousCount", query = "SELECT COUNT(*) FROM Polls p WHERE person = null")
 public class Polls implements HelperInterface {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id

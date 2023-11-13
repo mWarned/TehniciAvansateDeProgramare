@@ -10,6 +10,8 @@ import java.sql.Date;
 @NamedQuery(name = "Persoane.Oldest", query = "SELECT p FROM Persoane p WHERE p.dataNasterii = (SELECT MIN(p2.dataNasterii) FROM Persoane p2)")
 @NamedQuery(name = "Persoane.Youngest", query = "SELECT p FROM Persoane p WHERE p.dataNasterii = (SELECT MAX(p2.dataNasterii) FROM Persoane p2)")
 @NamedQuery(name = "Persoane.OrderByBirthday", query = "SELECT p FROM Persoane p ORDER BY p.dataNasterii ASC")
+@NamedQuery(name = "Persoane.DivortatPercentage", query = "SELECT (SUM(CASE WHEN divortat = 1 THEN 1 ELSE 0 END) * 100.0 / COUNT(*)) AS Percentage FROM Persoane")
+@NamedQuery(name = "Persoane.AgeRange", query = "SELECT p FROM Persoane p WHERE p.dataNasterii BETWEEN ?1 AND ?2")
 @NamedQuery(name = "Persoane.DeletePID", query = "DELETE FROM Persoane p WHERE p.pid = ?1")
 public class Persoane implements HelperInterface {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,6 +39,9 @@ public class Persoane implements HelperInterface {
     @Basic
     @Column(name = "casatorit")
     private byte casatorit;
+    @Basic
+    @Column(name = "divortat")
+    private byte divortat;
 
     public int getId() {
         return id;
@@ -102,6 +107,14 @@ public class Persoane implements HelperInterface {
         this.casatorit = casatorit;
     }
 
+    public byte getDivortat() {
+        return divortat;
+    }
+
+    public void setDivortat(byte divortat) {
+        this.divortat = divortat;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -145,6 +158,7 @@ public class Persoane implements HelperInterface {
                 ", email='" + email + '\'' +
                 ", dataNasterii=" + dataNasterii +
                 ", casatorit=" + casatorit +
+                ", divortat=" + divortat +
                 '}';
     }
 

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class queryOperations {
-    public static <T extends HelperInterface> List<T> useNamedQuery(String query, Class dbClass) {
+    public static <T extends HelperInterface> List<T> executeQuery(String query, Class dbClass) {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
@@ -29,7 +29,7 @@ public class queryOperations {
         return entityList;
     }
 
-    public static <T extends HelperInterface> void useNamedQueryUpdate(String query) {
+    public static <T extends HelperInterface> void queryUpdate(String query) {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
@@ -49,7 +49,7 @@ public class queryOperations {
         }
     }
 
-    public static <T extends HelperInterface, K> List<T> useQueryWithParameter(String query, K parameter, Class dbClass) {
+    public static <T extends HelperInterface, K> List<T> parameterQuery(String query, K parameter, Class dbClass) {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
@@ -72,7 +72,7 @@ public class queryOperations {
         return entityList;
     }
 
-    public static <T extends HelperInterface, K, R> List<T> useQueryWithTwoParameters(String query, K parameterOne, R parameterTwo, Class dbClass) {
+    public static <T extends HelperInterface, K, R> List<T> twoParametersQuery(String query, K parameterOne, R parameterTwo, Class dbClass) {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
@@ -96,7 +96,7 @@ public class queryOperations {
         return entityList;
     }
 
-    public static <T extends HelperInterface> T findQueryId(int id, Class dbClass) {
+    public static <T extends HelperInterface> T findById(int id, Class dbClass) {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
@@ -117,7 +117,7 @@ public class queryOperations {
         return entity;
     }
 
-    public static <T extends HelperInterface> void useInsertQueryList(List<T> entityList) {
+    public static <T extends HelperInterface> void insertList(List<T> entityList) {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
@@ -141,11 +141,11 @@ public class queryOperations {
         }
 
     }
-    public static <T extends HelperInterface> void useInsertQuery(T entity) {
-        useInsertQueryList(List.of(entity));
+    public static <T extends HelperInterface> void insert(T entity) {
+        insertList(List.of(entity));
     }
 
-    public static <T extends HelperInterface> void useDeleteQueryId(int id, Class dbClass) {
+    public static <T extends HelperInterface> void deleteById(int id, Class dbClass) {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();

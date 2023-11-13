@@ -8,7 +8,7 @@ import java.util.List;
 public class impPolls implements impHelper<Polls> {
     @Override
     public List<Polls> findAll() {
-        return queryOperations.useNamedQuery("Polls.All", Polls.class);
+        return queryOperations.executeQuery("Polls.All", Polls.class);
     }
 
     @Override

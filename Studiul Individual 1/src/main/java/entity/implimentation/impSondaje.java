@@ -8,7 +8,7 @@ import java.util.List;
 public class impSondaje implements impHelper<Sondaje>{
     @Override
     public List<Sondaje> findAll() {
-        return queryOperations.useNamedQuery("Sondaje.All", Sondaje.class);
+        return queryOperations.executeQuery("Sondaje.All", Sondaje.class);
     }
 
     @Override

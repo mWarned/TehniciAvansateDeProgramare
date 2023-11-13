@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 12, 2023 at 10:53 PM
+-- Generation Time: Nov 13, 2023 at 09:27 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -35,25 +35,26 @@ CREATE TABLE `persoane` (
   `nrTelefon` varchar(11) NOT NULL,
   `email` varchar(255) NOT NULL,
   `dataNasterii` date NOT NULL,
-  `casatorit` tinyint(1) NOT NULL
+  `casatorit` tinyint(1) NOT NULL,
+  `divortat` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `persoane`
 --
 
-INSERT INTO `persoane` (`ID`, `PID`, `Nume`, `Prenume`, `nrTelefon`, `email`, `dataNasterii`, `casatorit`) VALUES
-(1, 1, 'Mihai', 'Jizdan', '067523462', 'mihaij@gmail.com', '2004-07-09', 0),
-(2, 2, 'Smith', 'John', '023525478', 'john.smith@example.com', '1987-01-15', 1),
-(3, 3, 'Johnson', 'Alice', '023715254', 'alice.johnson@example.com', '2001-04-10', 1),
-(4, 4, 'Davis', 'Robert', '032669158', 'robert.davis@example.com', '1989-07-20', 0),
-(5, 5, 'Wilson', 'Sarah', '038956924', 'sarah.wilson@example.com', '1990-10-05', 0),
-(6, 6, 'Brown', 'Michael', '079096998', 'michael.brown@example.com', '1991-02-28', 1),
-(7, 7, 'Johnson', 'Lisa', '035753130', 'lisa.johnson@example.com', '2003-06-15', 0),
-(8, 8, 'Miller', 'David', '026460970', 'david.miller@example.com', '1993-09-30', 1),
-(9, 9, 'Martinez', 'Laura', '066844229', 'laura.martinez@example.com', '1994-12-15', 0),
-(10, 10, 'Garcia', 'William', '039539761', 'william.garcia@example.com', '2000-04-03', 1),
-(11, 11, 'Smith', 'Jennifer', '063509348', 'jennifer.smith@example.com', '1996-08-12', 0);
+INSERT INTO `persoane` (`ID`, `PID`, `Nume`, `Prenume`, `nrTelefon`, `email`, `dataNasterii`, `casatorit`, `divortat`) VALUES
+(1, 1, 'Mihai', 'Jizdan', '067523462', 'mihaij@gmail.com', '2004-07-09', 0, 1),
+(2, 2, 'Smith', 'John', '023525478', 'john.smith@example.com', '1987-01-15', 1, 1),
+(3, 3, 'Johnson', 'Alice', '023715254', 'alice.johnson@example.com', '2001-04-10', 1, 0),
+(4, 4, 'Davis', 'Robert', '032669158', 'robert.davis@example.com', '1989-07-20', 0, 0),
+(5, 5, 'Wilson', 'Sarah', '038956924', 'sarah.wilson@example.com', '1990-10-05', 0, 1),
+(6, 6, 'Brown', 'Michael', '079096998', 'michael.brown@example.com', '1991-02-28', 1, 0),
+(7, 7, 'Johnson', 'Lisa', '035753130', 'lisa.johnson@example.com', '2003-06-15', 0, 1),
+(8, 8, 'Miller', 'David', '026460970', 'david.miller@example.com', '1993-09-30', 1, 1),
+(9, 9, 'Martinez', 'Laura', '066844229', 'laura.martinez@example.com', '1994-12-15', 0, 0),
+(10, 10, 'Garcia', 'William', '039539761', 'william.garcia@example.com', '2000-04-03', 1, 1),
+(11, 11, 'Smith', 'Jennifer', '063509348', 'jennifer.smith@example.com', '1996-08-12', 0, 1);
 
 -- --------------------------------------------------------
 
